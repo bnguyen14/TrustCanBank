@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TrustCanBankSpringBootApplication {
+public class TrustCanBankApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TrustCanBankSpringBootApplication.class, args);
+		SpringApplication.run(TrustCanBankApplication.class, args);
 	}
 
 }
