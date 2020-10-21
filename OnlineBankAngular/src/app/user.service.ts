@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from './user';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Userlogin } from './userlogin';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +17,8 @@ export class UserService {
     return this.loggedIn;
   }
 
-  login(user:User) {
-    return this.httpClient.post<User>('http://localhost:8088/user/login',user,{observe: 'response'});
+  login(userlogin:Userlogin) {
+    return this.httpClient.post<User>('http://localhost:8088/user/login',userlogin,{observe: 'response'});
   }
 
   logout(){
@@ -27,7 +28,7 @@ export class UserService {
   }
 
   register(user:User){
-    console.log("front end: " + user.userName + "," + user.passWord);
-    return this.httpClient.post<User>('http://localhost:8088/user/register',user,{observe: 'response'});
+    console.log("front end: " + user.username + "," + user.password);
+    return this.httpClient.post<User>('http://localhost:8088/api/users/createUser',user,{observe: 'response'});
   }
 }

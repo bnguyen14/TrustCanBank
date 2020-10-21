@@ -1,0 +1,35 @@
+<form [formGroup]='registerForm'>
+    <div style="padding-top: 20px;">   
+        <h1 style="text-align: center;">{{message}}</h1> 
+        <div>
+            <mat-form-field appearance="fill" style="width: 300px;">
+                <mat-label>Email</mat-label>
+                <input  matInput [formControl]='email'/>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" style="width: 300px;">
+                <mat-label>Username</mat-label>
+                <input  matInput [formControl]='username'/>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" style="width: 300px;">
+                <mat-label>Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]='password'>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" style="width: 300px;">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]='passConfirm'>
+            </mat-form-field>
+        </div>
+        <div>
+            <button (click)="register()" mat-stroked-button color="primary" style="width:100px;">Register</button>
+        </div>
+    </div>
+</form>

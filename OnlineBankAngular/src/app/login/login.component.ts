@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { Userlogin } from '../userlogin';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() { 
-    var user = new User();
-    user.userName = this.loginForm.value.username;
-    user.passWord = this.loginForm.value.password;
+    var userlogin = new Userlogin();
+    userlogin.username = this.loginForm.value.username;
+    userlogin.password = this.loginForm.value.password;
     //console.log("at login method: " + user.userName + ", " + user.passWord);
-    this.UserService.login(user).subscribe(
+    this.UserService.login(userlogin).subscribe(
       (response) => {
         if(response.status==200){
           console.log(response);
