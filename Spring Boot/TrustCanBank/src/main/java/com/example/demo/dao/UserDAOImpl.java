@@ -1,6 +1,8 @@
 package com.example.demo.dao;
 
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserLogin;
+
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -60,5 +62,15 @@ public class UserDAOImpl implements UserDAO{
         Query<User> query = session.createQuery("DELETE FROM Trustcanbank WHERE userid=:ID");
         query.setParameter("ID", id);
         query.executeUpdate();
+    }
+    
+    @Transactional
+    public User findByLogin(UserLogin user) {
+    	Session session = entityManager.unwrap(Session.class);
+    	Query<User> query = session.createQuery("SELECT * FROM Trustcanbank WHERE username=:username AND password=:password");
+    	query.setParameter("username", user.getUsername());
+    	query.setParameter("password", user.getPassword());
+    	
+    	return query.getSingleResult();
     }
 }

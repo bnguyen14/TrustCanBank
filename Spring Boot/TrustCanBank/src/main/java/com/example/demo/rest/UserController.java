@@ -3,7 +3,11 @@ package com.example.demo.rest;
 
 import com.example.demo.dao.UserDAOImpl;
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserLogin;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,10 +42,10 @@ public class UserController {
     }
 
     @PostMapping("users/addUser")
-    public User createUser(@RequestBody User newUser){
+    public ResponseEntity<User> createUser(@RequestBody User newUser){
         newUser.setUserId(0);
         userDAOImpl.createUser(newUser);
-        return newUser;
+        return new ResponseEntity<User>(newUser,HttpStatus.OK);
     }
 
     @DeleteMapping("users/delete/{id}")
@@ -51,4 +55,20 @@ public class UserController {
             throw new RuntimeException("User is not found - " + id);
         userDAOImpl.deleteUserById(id);
     }
+    
+    @PostMapping(path="/login")
+	public ResponseEntity<User> login(@RequestBody UserLogin user){
+		System.out.println("user: " + user.getUsername() + ", " + user.getPassword());
+		User userResult = userDAOImpl.findByLogin(user);
+		//User userResult = userRepo.findUserByLogin(user.getUsername(), user.getPassword());
+		//System.out.println("result: " + userResult.getUserName() + ", " + userResult.getPassWord());
+		
+		if(userResult!=null) {
+			return new ResponseEntity<User>(userResult,HttpStatus.OK);
+		}else {
+			return new ResponseEntity<User>(userResult,HttpStatus.BAD_REQUEST);
+		}
+		
+		
+	}
 }
