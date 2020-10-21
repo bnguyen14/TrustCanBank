@@ -10,6 +10,7 @@ import java.util.List;
 
 @CrossOrigin(origins={"http://localhost:4200"}) // For angular
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
     private final UserDAOImpl userDAOImpl;
