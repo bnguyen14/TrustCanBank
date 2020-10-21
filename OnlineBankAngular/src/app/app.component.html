@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <span>{{title}}</span>
+  <span class="spacer"></span>
+  <span *ngIf="isLoggedIn; else elseBlock" style="text-align: end;">
+    <!-- <a (click)='logOut()' style="cursor: pointer;">Log Out</a> -->
+    <button mat-button [matMenuTriggerFor]="beforeMenu">{{UserService.user.userName}}</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>My Profile</button>
+      <button mat-menu-item (click)="logout()">LogOut</button>
+    </mat-menu>
+  </span>
+  <ng-template #elseBlock><a routerLink=''>Log In</a></ng-template>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
