@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
           // this.UserService.userchange.next(user.userName);
           this.router.navigate(['/Home']);
         }else{
-          this.message = "Incorrect Username/Password!";
+          //this.message = "Incorrect Username/Password!";
         }
       }
     );
