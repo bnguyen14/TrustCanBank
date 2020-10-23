@@ -19,7 +19,7 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { BankAccountDetailComponent } from './bank-account-detail/bank-account-detail.component';
+import { AccountDetailComponent } from './account-detail/account-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { BankAccountDetailComponent } from './bank-account-detail/bank-account-d
     RegisterComponent,
     LogoutComponent,
     HomeComponent,
-    BankAccountDetailComponent
+    AccountDetailComponent
   ],
   imports: [
     BrowserModule,
