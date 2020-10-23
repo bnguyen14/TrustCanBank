@@ -26,7 +26,7 @@ public class UserDAOImpl implements UserDAO{
     @Transactional
     public List<User> findAll() {
         Session session = entityManager.unwrap(Session.class);
-        Query<User> query = session.createQuery("FROM Trustcanbank");
+        Query<User> query = session.createQuery("FROM Bank_user");
         return query.getResultList();
     }
 
@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO{
     @Transactional
     public List<User> findByName(String username) {
         Session session = entityManager.unwrap(Session.class);
-        Query<User> query = session.createQuery("FROM trustcanbank WHERE username=:username");
+        Query<User> query = session.createQuery("FROM bank_user WHERE username=:username");
         query.setParameter("username", username);
         List<User> users = query.getResultList();
         return users;
@@ -59,7 +59,7 @@ public class UserDAOImpl implements UserDAO{
     @Transactional
     public void deleteUserById(int id) {
         Session session = entityManager.unwrap(Session.class);
-        Query<User> query = session.createQuery("DELETE FROM Trustcanbank WHERE userid=:ID");
+        Query<User> query = session.createQuery("DELETE FROM bank_user WHERE userid=:ID");
         query.setParameter("ID", id);
         query.executeUpdate();
     }
@@ -67,7 +67,7 @@ public class UserDAOImpl implements UserDAO{
     @Transactional
     public User findByLogin(UserLogin user) {
     	Session session = entityManager.unwrap(Session.class);
-    	Query<User> query = session.createQuery("SELECT * FROM Trustcanbank WHERE username=:username AND password=:password");
+    	Query<User> query = session.createQuery("SELECT * FROM bank_user WHERE username=:username AND password=:password");
     	query.setParameter("username", user.getUsername());
     	query.setParameter("password", user.getPassword());
     	
