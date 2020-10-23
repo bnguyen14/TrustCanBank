@@ -25,8 +25,8 @@ public class UserController {
     }
 
     @GetMapping("users/list")
-    public List<User> findAll(){
-        return userDAOImpl.findAll();
+    public ResponseEntity<List<User>> findAll(){
+    	return new ResponseEntity<List<User>>(userDAOImpl.findAll(),HttpStatus.OK);
     }
 
     @GetMapping("users/{id}")
@@ -56,7 +56,7 @@ public class UserController {
         userDAOImpl.deleteUserById(id);
     }
     
-    @PostMapping(path="/login")
+    @PostMapping(path="/users/login")
 	public ResponseEntity<User> login(@RequestBody UserLogin user){
 		System.out.println("user: " + user.getUsername() + ", " + user.getPassword());
 		User userResult = userDAOImpl.findByLogin(user);
