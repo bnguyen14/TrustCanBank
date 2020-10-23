@@ -18,7 +18,7 @@ export class UserService {
   }
 
   login(userlogin:Userlogin) {
-    return this.httpClient.post<User>('http://localhost:8088/user/login',userlogin,{observe: 'response'});
+    return this.httpClient.post<User>('http://localhost:8080/api/users/login',userlogin,{observe: 'response'});
   }
 
   logout(){
@@ -28,7 +28,7 @@ export class UserService {
   }
 
   register(user:User){
-    console.log("front end: " + user.username + "," + user.password);
-    return this.httpClient.post<User>('http://localhost:8088/api/users/createUser',user,{observe: 'response'});
+    //console.log("front end: " + user.username + "," + user.password);
+    return this.httpClient.post<User>('http://localhost:8080/api/users/addUser',user,{observe: 'response'});
   }
 }

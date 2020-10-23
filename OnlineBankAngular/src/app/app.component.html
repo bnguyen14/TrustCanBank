@@ -3,10 +3,16 @@
   <span class="spacer"></span>
   <span *ngIf="isLoggedIn; else elseBlock" style="text-align: end;">
     <!-- <a (click)='logOut()' style="cursor: pointer;">Log Out</a> -->
-    <button mat-button [matMenuTriggerFor]="beforeMenu">{{UserService.user.userName}}</button>
+    <a mat-icon-button class="mat-button-wrapper" [matMenuTriggerFor]="beforeMenu" style="cursor: pointer;">
+      <span>
+        {{UserService.user.username}}
+      <mat-icon class="mat-icon">arrow_drop_down</mat-icon>
+      </span>
+      <span class="mat-button-focus-overlay"></span>
+    </a>
     <mat-menu #beforeMenu="matMenu" xPosition="before">
       <button mat-menu-item>My Profile</button>
-      <button mat-menu-item (click)="logout()">LogOut</button>
+      <button mat-menu-item (click)="logOut()">LogOut</button>
     </mat-menu>
   </span>
   <ng-template #elseBlock><a routerLink=''>Log In</a></ng-template>
