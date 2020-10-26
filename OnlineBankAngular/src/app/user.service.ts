@@ -3,6 +3,8 @@ import { User } from './user';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Userlogin } from './userlogin';
+import { Account } from './account';
+import { Transaction } from './transaction';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +30,12 @@ export class UserService {
   }
 
   register(user:User){
-    //console.log("front end: " + user.username + "," + user.password);
     return this.httpClient.post<User>('http://localhost:8080/api/users/addUser',user,{observe: 'response'});
+  }
+  getAccounts(userId:Number){
+    return this.httpClient.get<Account[]>('http://localhost:8080/api/accounts/listAccountsByUser/'+userId,{observe: 'response'});
+  }
+  getTransactions(accountId:Number){
+    return this.httpClient.get<Transaction[]>('http://localhost:8080/api/transactions/listByTransaction/'+accountId,{observe: 'response'});
   }
 }

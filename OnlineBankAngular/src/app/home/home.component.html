@@ -1,1 +1,7 @@
-<p>home works!</p>
+<div style="margin-bottom: 20px;"></div>
+<div>
+    <mat-card *ngFor='let account of accounts' style="cursor: pointer;" (click)="goToDetail(account.accountId)">
+        <mat-card-title>${{account.accountBalance.toFixed(2)}}</mat-card-title>
+        <mat-card-subtitle>{{account.accountType}}</mat-card-subtitle>
+    </mat-card>
+</div>

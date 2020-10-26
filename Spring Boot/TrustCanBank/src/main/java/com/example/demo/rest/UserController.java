@@ -60,9 +60,6 @@ public class UserController {
 	public ResponseEntity<User> login(@RequestBody UserLogin user){
 		System.out.println("user: " + user.getUsername() + ", " + user.getPassword());
 		User userResult = userDAOImpl.findByLogin(user);
-		//User userResult = userRepo.findUserByLogin(user.getUsername(), user.getPassword());
-		//System.out.println("result: " + userResult.getUserName() + ", " + userResult.getPassWord());
-		
 		if(userResult!=null) {
 			return new ResponseEntity<User>(userResult,HttpStatus.OK);
 		}else {

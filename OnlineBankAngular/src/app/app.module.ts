@@ -16,10 +16,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { BankAccountDetailComponent } from './bank-account-detail/bank-account-detail.component';
+import { AccountDetailComponent } from './account-detail/account-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { BankAccountDetailComponent } from './bank-account-detail/bank-account-d
     RegisterComponent,
     LogoutComponent,
     HomeComponent,
-    BankAccountDetailComponent
+    AccountDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +43,8 @@ import { BankAccountDetailComponent } from './bank-account-detail/bank-account-d
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

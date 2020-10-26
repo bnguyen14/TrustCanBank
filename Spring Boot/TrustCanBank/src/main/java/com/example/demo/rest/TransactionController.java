@@ -25,9 +25,10 @@ public class TransactionController {
         return transactionDAOImpl.findAll();
     }
 
-    @GetMapping("transactions/listByTransaction")
-    public List<Transaction> findAllTransactionsByAccount(int id){
-        return transactionDAOImpl.findAllTransactionsByAccount(id);
+    @GetMapping("transactions/listByTransaction/{id}")
+    public ResponseEntity<List<Transaction>> findAllTransactionsByAccount(@PathVariable int id){
+    	
+        return new ResponseEntity<List<Transaction>>(transactionDAOImpl.findAllTransactionsByAccount(id), HttpStatus.OK);
     }
 
     @GetMapping("transactions/{id}")
