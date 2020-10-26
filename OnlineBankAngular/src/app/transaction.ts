@@ -1,6 +1,6 @@
 export class Transaction {
     transactionId:Number;
-    transactionDate:String;
+    transactionDate:Date;
     transactionType:String;
     transactionAmount:Number;
     accountId:Number;

@@ -23,7 +23,7 @@ public class TransactionDAOImpl implements TransactionDAO{
     @Transactional
     public List<Transaction> findAll() {
         Session session = entityManager.unwrap(Session.class);
-        Query<Transaction> query = session.createQuery("FROM Account_transaction");
+        Query<Transaction> query = session.createQuery("FROM Transaction");
         return query.getResultList();
     }
 
@@ -31,7 +31,7 @@ public class TransactionDAOImpl implements TransactionDAO{
     @Transactional
     public List<Transaction> findAllTransactionsByAccount(int id) {
         Session session = entityManager.unwrap(Session.class);
-        Query<Transaction> query = session.createQuery("FROM Account_transaction WHERE account_id=:ID");
+        Query<Transaction> query = session.createQuery("FROM Transaction WHERE account_id=:ID");
         query.setParameter("ID", id);
         return query.getResultList();
     }
@@ -55,7 +55,7 @@ public class TransactionDAOImpl implements TransactionDAO{
     @Transactional
     public void deleteTransactionById(int id) {
         Session session = entityManager.unwrap(Session.class);
-        Query<Transaction> query = session.createQuery("DELETE FROM account_transaction WHERE account_id=:ID");
+        Query<Transaction> query = session.createQuery("DELETE FROM Transaction WHERE account_id=:ID");
         query.setParameter("ID", id);
         query.executeUpdate();
     }

@@ -25,8 +25,8 @@ public class AccountController {
         return accountDAOImpl.findAll();
     }
 
-    @GetMapping("accounts/listAccountsByUser")
-    public List<Account> findAllAccountsByUser(int id){
+    @GetMapping("accounts/listAccountsByUser/{id}")
+    public List<Account> findAllAccountsByUser(@PathVariable("id") int id){
         return accountDAOImpl.findAllAccountsByUser(id);
     }
 

@@ -33,9 +33,9 @@ export class UserService {
     return this.httpClient.post<User>('http://localhost:8080/api/users/addUser',user,{observe: 'response'});
   }
   getAccounts(userId:Number){
-    return this.httpClient.get<Account[]>('http://localhost:8080/api/accounts/listAccountsByUser'+userId,{observe: 'response'});
+    return this.httpClient.get<Account[]>('http://localhost:8080/api/accounts/listAccountsByUser/'+userId,{observe: 'response'});
   }
   getTransactions(accountId:Number){
-    return this.httpClient.get<Transaction[]>('http://localhost:8080/api/accounts/listByTransaction'+accountId,{observe: 'response'});
+    return this.httpClient.get<Transaction[]>('http://localhost:8080/api/transactions/listByTransaction/'+accountId,{observe: 'response'});
   }
 }

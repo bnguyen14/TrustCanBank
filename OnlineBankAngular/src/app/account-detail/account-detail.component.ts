@@ -9,9 +9,8 @@ import { Transaction } from '../transaction';
   styleUrls: ['./account-detail.component.css']
 })
 export class AccountDetailComponent implements OnInit {
-
   transactions:Transaction[];
-
+  displayedColumns = ['transactionType','transactionDate','transactionAmount'];
   constructor(public UserService:UserService, private Router: Router) { }
 
   ngOnInit(): void {

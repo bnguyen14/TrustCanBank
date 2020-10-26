@@ -3,4 +3,5 @@ export class Account {
     accountType:String;
     accountBalance:Number;
     userId:Number;
+    stringBalance:String;
 }

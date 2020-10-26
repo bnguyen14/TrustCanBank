@@ -4,11 +4,11 @@ USE `trustcanbank`;
 
 DROP TABLE IF EXISTS `bank_user`;
 CREATE TABLE `bank_user` (
-  `userid` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(45) DEFAULT NULL, 
   `password` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`userid`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 USE `trustcanbank`;
@@ -16,10 +16,10 @@ DROP TABLE IF EXISTS `bank_account`;
 CREATE TABLE `bank_account` (
   `account_id` int NOT NULL AUTO_INCREMENT,
   `account_type` varchar(45) DEFAULT NULL, 
-  `account balance` DECIMAL(13,2) DEFAULT NULL,
-  `userid` int,
+  `account_balance` DECIMAL(13,2) DEFAULT NULL,
+  `user_id` int,
   PRIMARY KEY (`account_id`),
-  FOREIGN KEY (`userid`) REFERENCES Bank_user (`userid`) 
+  FOREIGN KEY (`user_id`) REFERENCES Bank_user (`user_id`) 
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 USE `trustcanbank`;

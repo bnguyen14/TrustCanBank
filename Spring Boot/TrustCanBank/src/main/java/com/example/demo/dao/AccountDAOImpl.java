@@ -24,7 +24,7 @@ public class AccountDAOImpl implements AccountDAO{
     @Transactional
     public List<Account> findAll() {
         Session session = entityManager.unwrap(Session.class);
-        Query<Account> query = session.createQuery("FROM Bank_account");
+        Query<Account> query = session.createQuery("FROM Account");
         return query.getResultList();
     }
 
@@ -32,7 +32,7 @@ public class AccountDAOImpl implements AccountDAO{
     @Transactional
     public List<Account> findAllAccountsByUser(int id) {
         Session session = entityManager.unwrap(Session.class);
-        Query<Account> query = session.createQuery("FROM bank_account WHERE userid=:ID");
+        Query<Account> query = session.createQuery("FROM Account WHERE user_id=:ID");
         query.setParameter("ID", id);
         return query.getResultList();
     }
@@ -56,7 +56,7 @@ public class AccountDAOImpl implements AccountDAO{
     @Transactional
     public void deleteAccountById(int id) {
         Session session = entityManager.unwrap(Session.class);
-        Query<Account> query = session.createQuery("DELETE FROM bank_account WHERE account_id=:ID");
+        Query<Account> query = session.createQuery("DELETE FROM Account WHERE account_id=:ID");
         query.setParameter("ID", id);
         query.executeUpdate();
     }

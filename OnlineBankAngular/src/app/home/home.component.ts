@@ -9,17 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+
   accounts:Account[];
 
   constructor(public UserService:UserService, private Router: Router) { }
   
   ngOnInit(): void {
-    this.UserService.getAccounts(this.UserService.user.userId).subscribe(
-      (response) => {
-        this.accounts = response.body;
-      }
-    )
+    if(this.UserService.user){
+      this.UserService.getAccounts(this.UserService.user.userId).subscribe(
+        (response) => {
+          this.accounts = response.body;
+          console.log(this.accounts);
+          console.log(this.UserService.user.userId);
+        }
+      )
+    }else{
+      this.Router.navigate(['']);
+    }
   }
 
   goToDetail(id:Number){
