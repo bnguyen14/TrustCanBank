@@ -1,3 +1,33 @@
+<div style="margin-bottom: 20px;"></div>
+<div>
+    <span>
+        <button mat-button (click)=goBack()>Back To Accounts</button>
+    </span>
+    <span>
+        <button mat-button [matMenuTriggerFor]="beforeMenu">Add Transaction</button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <span>
+                <mat-form-field appearance="fill" (click)="$event.stopPropagation()">
+                    <mat-select required [formControl]='type'>
+                        <mat-option value="Deposit">Deposit</mat-option>
+                        <mat-option value="Withdraw">Withdraw</mat-option>
+                    </mat-select>
+                    <mat-label>Type</mat-label>
+                </mat-form-field>
+            </span>
+            <span>
+                <mat-form-field appearance="fill" (click)="$event.stopPropagation()">
+                    <mat-label>amount</mat-label>
+                    <input matInput [formControl]='amount' placeholder="Simple placeholder">
+                </mat-form-field>
+            </span>
+            <span>
+                <button mat-button (click)='addTransaction()'>Submit</button>
+            </span>
+        </mat-menu>
+    </span>
+</div>
+
 <div>
     <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
 
@@ -20,3 +50,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
+
+
+

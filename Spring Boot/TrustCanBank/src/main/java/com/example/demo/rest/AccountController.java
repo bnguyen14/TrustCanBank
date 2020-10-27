@@ -1,6 +1,8 @@
 package com.example.demo.rest;
 import com.example.demo.dao.AccountDAOImpl;
 import com.example.demo.entity.Account;
+import com.example.demo.entity.Transaction;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,7 @@ public class AccountController {
 
     @PostMapping("accounts/addAccount")
     public ResponseEntity<Account> createAccount(@RequestBody Account newAccount){
+    	System.out.println("controller_createaccount called");
         newAccount.setAccountId(0);
         accountDAOImpl.createAccount(newAccount);
         return new ResponseEntity<Account>(newAccount, HttpStatus.OK);
@@ -49,5 +52,12 @@ public class AccountController {
         if(theAccount == null)
             throw new RuntimeException("Account is not found - " + id);
         accountDAOImpl.deleteAccountById(id);
+    }
+    
+    @PostMapping("accounts/changeBalance")
+    public void changeBalance(@RequestBody Transaction transaction) {
+    	System.out.println("changing balance");
+    	accountDAOImpl.changeAccountBalance(transaction.getTransactionAmount(), transaction.getAccountId());
+    	
     }
 }

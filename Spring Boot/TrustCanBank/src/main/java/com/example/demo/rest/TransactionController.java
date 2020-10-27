@@ -38,8 +38,9 @@ public class TransactionController {
     }
 
     @PostMapping("transactions/addTransaction")
-    public ResponseEntity<Transaction> createTransaction(Transaction newTransaction){
+    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction newTransaction){
         newTransaction.setTransactionId(0);
+        System.out.println(newTransaction.toString());
         transactionDAOImpl.createTransaction(newTransaction);
         return new ResponseEntity<Transaction>(newTransaction, HttpStatus.OK);
     }

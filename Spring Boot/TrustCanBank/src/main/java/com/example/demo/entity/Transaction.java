@@ -1,7 +1,8 @@
 package com.example.demo.entity;
 
-import javax.persistence.*;
+import java.time.format.DateTimeFormatter;
 
+import javax.persistence.*;
 @Entity
 @Table(name="account_transaction")
 public class Transaction {
@@ -12,7 +13,7 @@ public class Transaction {
     private int transactionId;
 
     @Column(name="transaction_date")
-    private String transactionDate;
+    private java.time.LocalDate transactionDate;
 
     @Column(name="transaction_type")
     private String transactionType;
@@ -25,13 +26,13 @@ public class Transaction {
 
     public Transaction() {
         this.transactionId = 0;
-        this.transactionDate = "";
+        this.transactionDate = null;
         this.transactionType = "";
         this.transactionAmount = 0.0;
         this.accountId = 0;
     }
 
-    public Transaction(int transactionId, String transactionDate, String transactionType, double transactionAmount, int accountId) {
+    public Transaction(int transactionId, java.time.LocalDate transactionDate, String transactionType, double transactionAmount, int accountId) {
         this.transactionId = transactionId;
         this.transactionDate = transactionDate;
         this.transactionType = transactionType;
@@ -47,11 +48,11 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public String getTransactionDate() {
+    public java.time.LocalDate getTransactionDate() {
         return transactionDate;
     }
 
-    public void setTransactionDate(String transactionDate) {
+    public void setTransactionDate(java.time.LocalDate transactionDate) {
         this.transactionDate = transactionDate;
     }
 
@@ -83,7 +84,7 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "transactionId=" + transactionId +
-                ", transactionDate='" + transactionDate + '\'' +
+                ", transactionDate='" + transactionDate.format(DateTimeFormatter.ofPattern("yyyy MM dd")) + '\'' +
                 ", transactionType='" + transactionType + '\'' +
                 ", transactionAmount=" + transactionAmount +
                 ", accountId=" + accountId +

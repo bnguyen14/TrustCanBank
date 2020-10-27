@@ -38,4 +38,13 @@ export class UserService {
   getTransactions(accountId:Number){
     return this.httpClient.get<Transaction[]>('http://localhost:8080/api/transactions/listByTransaction/'+accountId,{observe: 'response'});
   }
+  addAccounts(account:Account){
+    return this.httpClient.post<Account>('http://localhost:8080/api/accounts/addAccount',account,{observe: 'response'});
+  }
+  addTransaction(transaction:Transaction){
+    return this.httpClient.post<Transaction>('http://localhost:8080/api/transactions/addTransaction',transaction,{observe: 'response'});
+  }
+  changeBalance(transaction:Transaction){
+    return this.httpClient.post('http://localhost:8080/api/accounts/changeBalance',transaction);
+  }
 }
