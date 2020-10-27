@@ -49,7 +49,7 @@ export class AccountDetailComponent implements OnInit {
       this.transactionForm.value.type,
       realAmount,
       history.state.id,
-      formatDate(new Date(),'yyyy/MM/dd','en')
+      new Date()
     );
     console.log(tmpTransaction);
     this.UserService.addTransaction(tmpTransaction).subscribe(
