@@ -4,3 +4,17 @@ table{
     margin-right: auto;
     margin-top: 20px;
 }
+div{
+    text-align: center;
+}
+mat-form-field{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+::ng-deep.mat-menu-panel {
+    max-width: none !important;
+}
+button{
+    margin-left: 20px;
+    margin-right: 20px;
+}

@@ -3,5 +3,10 @@ export class Account {
     accountType:String;
     accountBalance:Number;
     userId:Number;
-    stringBalance:String;
+    constructor(accountType:String,userId:Number){
+        this.accountId=0;
+        this.accountType=accountType;
+        this.userId=userId;
+        this.accountBalance=0;
+    }
 }

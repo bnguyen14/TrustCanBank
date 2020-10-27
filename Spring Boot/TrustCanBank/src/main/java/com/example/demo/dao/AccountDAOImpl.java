@@ -48,6 +48,7 @@ public class AccountDAOImpl implements AccountDAO{
     @Override
     @Transactional
     public void createAccount(Account newAccount) {
+    	System.out.println("DAO_createaccount called");
         Session session = entityManager.unwrap(Session.class);
         session.saveOrUpdate(newAccount);
     }
@@ -59,5 +60,20 @@ public class AccountDAOImpl implements AccountDAO{
         Query<Account> query = session.createQuery("DELETE FROM Account WHERE account_id=:ID");
         query.setParameter("ID", id);
         query.executeUpdate();
+    }
+    
+    @Override
+    @Transactional
+    public void changeAccountBalance(double amount, int id) {
+    	Session session = entityManager.unwrap(Session.class);
+    	Account account = findById(id);
+    	account.setAccountBalance(account.getAccountBalance()+amount);
+    	session.saveOrUpdate(account);
+//    	Query<Account> query = session.createQuery("SELECT accountBalance FROM Account WHERE account_id=:ID");
+//    	query.setParameter("ID", id);
+//    	Query<Account> updateQuery = session.createQuery("UPDATE Account SET accountBalance=:balance WHERE account_id=:ID");
+//    	updateQuery.setParameter("ID", id);
+//    	updateQuery.setParameter("balance", query.getFirstResult()-amount);
+//    	updateQuery.executeUpdate();
     }
 }

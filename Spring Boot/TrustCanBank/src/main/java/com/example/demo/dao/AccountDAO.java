@@ -12,4 +12,5 @@ public interface AccountDAO {
     Account findById(int id);
     void createAccount(Account newAccount);
     void deleteAccountById(int id);
+	void changeAccountBalance(double amount, int id);
 }

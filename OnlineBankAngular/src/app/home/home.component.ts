@@ -31,4 +31,24 @@ export class HomeComponent implements OnInit {
   goToDetail(id:Number){
     this.Router.navigate(['/Detail'],{state:{id:id}});
   }
+
+  addAccount(type:String){
+    console.log("addAccount is called");
+    
+    const tmpAcc = new Account(type,this.UserService.user.userId);
+    console.log(tmpAcc);
+    this.UserService.addAccounts(tmpAcc).subscribe(
+      (response) => {
+        this.UserService.getAccounts(this.UserService.user.userId).subscribe(
+          (response) => {
+            this.accounts = response.body;
+            console.log(this.accounts);
+            console.log(this.UserService.user.userId);
+          }
+        )
+        console.log("service was called");
+      }
+    )
+    
+  }
 }
